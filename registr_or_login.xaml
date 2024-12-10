@@ -1,0 +1,42 @@
+﻿<Window x:Class="OrderManagementApplication.registr_or_login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderManagementApplication"
+        mc:Ignorable="d"
+        Title="registr_or_login" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button Name="LoginButton" Content="Вход" Width="100" Click="ShowLoginPanel" Margin="5"/>
+            <Button Name="RegisterButton" Content="Регистрация" Width="100" Click="ShowRegisterPanel" Margin="5"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <!-- Вход -->
+            <StackPanel x:Name="LoginPanel" Visibility="Visible">
+                <TextBlock Text="Вход" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <TextBlock Text="Имя пользователя:"/>
+                <TextBox Name="LoginUsernameTextBox" Margin="0,0,0,10" Width="200"/>
+                <TextBlock Text="Пароль:"/>
+                <PasswordBox Name="LoginPasswordBox" Margin="0,0,0,20" Width="200"/>
+                <Button Content="Войти" Width="200" Click="LoginButton_Click"/>
+            </StackPanel>
+
+            <!-- Регистрация -->
+            <StackPanel x:Name="RegisterPanel" Visibility="Collapsed">
+                <TextBlock Text="Регистрация" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <TextBlock Text="Имя пользователя:"/>
+                <TextBox Name="RegisterUsernameTextBox" Margin="0,0,0,10" Width="200"/>
+                <TextBlock Text="Пароль:"/>
+                <PasswordBox Name="RegisterPasswordBox" Margin="0,0,0,20" Width="200"/>
+                <Button Content="Зарегистрироваться" Width="200" Click="RegisterButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
