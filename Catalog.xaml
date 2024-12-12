@@ -5,10 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OrderManagementApplication"
         mc:Ignorable="d"
-        Title="Catalog" Height="450" Width="800">
+        Title="Catalog" Height="450" Width="800"
+        Background="#F5F5F5">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#6200EE"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3700B3"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#03DAC5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#BBDEFB"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E3F2FD"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <StackPanel>
-            <Button Content="Создать карточку" Click="CreateCardButton_Click" Margin="0,0,0,20"/>
+            <Button Content="Создать карточку" Click="CreateCardButton_Click"/>
             <ListBox x:Name="RequestsListBox" SelectionChanged="RequestsListBox_SelectionChanged">
                 <!-- Элементы списка будут добавлены программно -->
             </ListBox>

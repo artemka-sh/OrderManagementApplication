@@ -1,26 +1,76 @@
 ﻿<Window x:Class="OrderManagementApplication.CardWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Карточка заявки" Height="400" Width="300">
+        Title="Карточка заявки" Height="602" Width="300"
+        Background="#F0F4F8">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#B0BEC5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="35"/>
+            <!-- Увеличена высота -->
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FFAFAF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1976D2"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#0D47A1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Foreground" Value="#424242"/>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <StackPanel>
             <TextBlock Text="ФИО:"/>
-            <TextBox x:Name="FullNameTextBox" Margin="0,0,0,10"/>
+            <TextBox x:Name="FullNameTextBox"/>
 
             <TextBlock Text="Телефон:"/>
-            <TextBox x:Name="PhoneTextBox" Margin="0,0,0,10"/>
+            <TextBox x:Name="PhoneTextBox"/>
 
             <TextBlock Text="Почта:"/>
-            <TextBox x:Name="EmailTextBox" Margin="0,0,0,10"/>
+            <TextBox x:Name="EmailTextBox"/>
 
             <TextBlock Text="Описание:"/>
-            <TextBox x:Name="DescriptionTextBox" AcceptsReturn="True" Height="60" Margin="0,0,0,10"/>
+            <TextBox x:Name="DescriptionTextBox" AcceptsReturn="True" Height="60"/>
 
             <TextBlock Text="Тип неисправности:"/>
-            <TextBox x:Name="FaultTypeTextBox" Margin="0,0,0,10"/>
+            <TextBox x:Name="FaultTypeTextBox"/>
 
             <TextBlock Text="Модель:"/>
-            <TextBox x:Name="ModelTextBox" Margin="0,0,0,10"/>
+            <TextBox x:Name="ModelTextBox"/>
 
             <Button Content="Готово" Click="DoneButton_Click" Width="100" HorizontalAlignment="Right"/>
         </StackPanel>

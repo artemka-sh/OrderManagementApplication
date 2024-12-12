@@ -3,9 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OrderManagementApplication"
         mc:Ignorable="d"
-        Title="registr_or_login" Height="450" Width="800">
+        Title="Регистрация или Вход" Height="450" Width="800"
+        Background="#F5F5F5">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,8 +69,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Name="LoginButton" Content="Вход" Width="100" Click="ShowLoginPanel" Margin="5"/>
-            <Button Name="RegisterButton" Content="Регистрация" Width="100" Click="ShowRegisterPanel" Margin="5"/>
+            <Button Name="LoginButton" Content="Вход" Click="ShowLoginPanel"/>
+            <Button Name="RegisterButton" Content="Регистрация" Click="ShowRegisterPanel"/>
         </StackPanel>
 
         <Grid Grid.Row="1">
@@ -22,20 +78,20 @@
             <StackPanel x:Name="LoginPanel" Visibility="Visible">
                 <TextBlock Text="Вход" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
                 <TextBlock Text="Имя пользователя:"/>
-                <TextBox Name="LoginUsernameTextBox" Margin="0,0,0,10" Width="200"/>
+                <TextBox Name="LoginUsernameTextBox"/>
                 <TextBlock Text="Пароль:"/>
-                <PasswordBox Name="LoginPasswordBox" Margin="0,0,0,20" Width="200"/>
-                <Button Content="Войти" Width="200" Click="LoginButton_Click"/>
+                <PasswordBox Name="LoginPasswordBox"/>
+                <Button Content="Войти" Click="LoginButton_Click"/>
             </StackPanel>
 
             <!-- Регистрация -->
             <StackPanel x:Name="RegisterPanel" Visibility="Collapsed">
                 <TextBlock Text="Регистрация" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
                 <TextBlock Text="Имя пользователя:"/>
-                <TextBox Name="RegisterUsernameTextBox" Margin="0,0,0,10" Width="200"/>
+                <TextBox Name="RegisterUsernameTextBox"/>
                 <TextBlock Text="Пароль:"/>
-                <PasswordBox Name="RegisterPasswordBox" Margin="0,0,0,20" Width="200"/>
-                <Button Content="Зарегистрироваться" Width="200" Click="RegisterButton_Click"/>
+                <PasswordBox Name="RegisterPasswordBox"/>
+                <Button Content="Зарегистрироваться" Click="RegisterButton_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

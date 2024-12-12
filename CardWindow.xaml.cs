@@ -44,13 +44,21 @@ namespace OrderManagementApplication
             _request.FaultType = FaultTypeTextBox.Text;
             _request.Model = ModelTextBox.Text;
 
-            if (RequestSaved != null)
+            // Вызываем соответствующее событие в зависимости от того, создается ли новая заявка или обновляется существующая
+            if (_request.FullName != null && _request.Description != null) // Проверка на наличие данных
             {
-                RequestSaved(_request);
+                if (RequestSaved != null && _request != null)
+                {
+                    RequestSaved(_request);
+                }
+                else if (RequestUpdated != null && _request != null)
+                {
+                    RequestUpdated(_request);
+                }
             }
-            else if (RequestUpdated != null)
+            else
             {
-                RequestUpdated(_request);
+                MessageBox.Show("Пожалуйста, заполните все обязательные поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             this.Close();
