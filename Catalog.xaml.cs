@@ -43,6 +43,7 @@ namespace OrderManagementApplication
             {
                 var cardWindow = new CardWindow(selectedRequest);
                 cardWindow.RequestUpdated += CardWindow_RequestUpdated;
+                cardWindow.RequestDeleted += CardWindow_RequestDeleted; // Подписка на событие удаления
                 cardWindow.ShowDialog();
             }
         }
@@ -58,6 +59,16 @@ namespace OrderManagementApplication
                     UpdateRequestsList();
                     SaveRequests(); // Сохраняем запросы после обновления
                 }
+            }
+        }
+
+        private void CardWindow_RequestDeleted(RepairRequest request)
+        {
+            if (userRequests.ContainsKey(currentUser))
+            {
+                userRequests[currentUser].Remove(request);
+                UpdateRequestsList();
+                SaveRequests(); // Сохраняем запросы после удаления
             }
         }
 
@@ -97,6 +108,7 @@ namespace OrderManagementApplication
         public string Description { get; set; }
         public string FaultType { get; set; }
         public string Model { get; set; }
+        public string OrderStatus { get; set; }
 
         public override string ToString()
         {

@@ -67,7 +67,34 @@
         <StackPanel>
             <Button Content="Создать карточку" Click="CreateCardButton_Click"/>
             <ListBox x:Name="RequestsListBox" SelectionChanged="RequestsListBox_SelectionChanged">
-                <!-- Элементы списка будут добавлены программно -->
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FullName}" FontWeight="Bold" Margin="0,0,10,0"/>
+                            <TextBlock Text="{Binding Description}" Margin="0,0,10,0"/>
+                            <TextBlock Text="(Статус: " />
+                            <TextBlock Text="{Binding OrderStatus}" FontStyle="Italic">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OrderStatus}" Value="Новый">
+                                                <Setter Property="Foreground" Value="Green"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding OrderStatus}" Value="В процессе">
+                                                <Setter Property="Foreground" Value="Orange"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding OrderStatus}" Value="Завершен">
+                                                <Setter Property="Foreground" Value="Blue"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text=")" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
     </Grid>
